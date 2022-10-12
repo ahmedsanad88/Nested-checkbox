@@ -23,10 +23,17 @@ export const getAllChildren = (target: number, data: GetChildProps[]) => {
     return items ? items : []
 }
 
-// function to add status to all data.
-// const addingStatus = (data: GetChildProps[]) => {
-//     data.map((item) => {
+// function to add status to all data. still building process
+export const addingStatus = (data: GetChildProps[]) => {
+    let newData = data;
+    newData.map((item) => {
+        let status: boolean = false;
+        item.status = status
+        if(Array.isArray(item.data)) {
+            addingStatus(item.data)
+        }
+    })
 
-//     })
-// }
+    return newData;
+}
 
